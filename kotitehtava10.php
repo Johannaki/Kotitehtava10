@@ -10,49 +10,53 @@
        <h2>Mitä haluat tehdä?</h2>
 
        <form action="kotitehtava10.php" method="POST">
-         <input type="radio" name="toiminto" value="Nosto" checked> Nostaa rahaa tililtä<br>
-         <input type="radio" name="toiminto" value="Pano"> Lisätä rahaa tilille<br>
-         <input type="radio" name="toiminto" value="Uusi"> Avata tili<br>
-         <input type="radio" name="toiminto" value="Heippa"> Sulkea tili<br>
+         <input type="radio" name="nosto" value="Nosto" checked> Nostaa 50 euroa tililtä<br>
+         <input type="radio" name="pano" value="Pano"> Lisätä 50 euroa tilille<br>
+         <input type="radio" name="uusi" value="Uusi"> Avata tili<br>
+         <input type="radio" name="heippa" value="Heippa"> Sulkea tili<br>
          <input type="submit" value="Toteuta toiminto"><br><br>
        </form>
 
 
 <?php
-
-
-//Luokka
   class BankAccount {
     public $accountNumber;
     private $balance;
     public $dateOpened;
     public $accountType;
 
-    //metodi
-  //En tiedä saisiko näin tehdä, mutta panisin tuon ehdon tähän koodin malliin.
-  if ((isset($_POST['submit']) && $_POST['toiminto'] == 'true')) {
-  public function set_a() {
-    $this->accountNumber = $newaccountNumber;
-    $this->balance = $newbalance;
-    $this->dateOpened = $newdateOpened;
-    $this->accountType = $newaccountType;
-  }
-  function puhu() {
-    echo "$this->newaccountNumber <br>$this->newbalance <br>$this->newdateOpened <br>$this->newaccountType<br><br>";
-  }
-
-  } else {
     function __construct($accountNumber, $balance, $dateOpened, $accountType) {
       $this->accountNumber = $accountNumber;
       $this->balance = $balance;
       $this->dateOpened = $dateOpened;
       $this->accountType = $accountType;
+
+      public function get_a() {
+        return $this->a;
+      }
+
+      public function set_a($value) {
+        $this->a = $value;
+      }
+    }
+
+
+  if (isset($_POST['submit'])) {
+  public function set_a() {
+    if ($_POST['nosto'] == 'true') {
+    $balance->set_a(-50);
+    }
+    elseif ($_POST['pano'] == 'true') {
+    $balance->set_a(+50);
+    }
+    elseif ($_POST['uusi'] == 'true') {
+    }
+    elseif ($_POST['heippa'] == 'true') {
     }
   }
-
-    function puhu() {
-      echo "$this->accountNumber <br>$this->balance <br>$this->dateOpened <br>$this->accountType<br><br>";
-    }
+  function puhu() {
+    echo "$this->accountNumber <br>$this->balance <br>$this->dateOpened <br>$this->accountType<br><br>";
+  }
 }
 
 
@@ -71,7 +75,6 @@ $A7652->puhu();
 $B2311->puhu();
 $S2314->puhu();
 }
-
 
 ?>
 
